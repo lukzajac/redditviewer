@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Liberation Sans';
+    src: url('../LiberationSans-Regular.ttf');
+}
+
+BorderPane {
+    -fx-font-family: 'Liberation Sans';
+}

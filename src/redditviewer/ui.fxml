@@ -9,6 +9,7 @@
 
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="redditviewer.UiController">
     <top>
@@ -26,4 +27,8 @@
             <TextArea fx:id="postContents" VBox.vgrow="ALWAYS" editable="false" wrapText="true"/>
         </VBox>
     </center>
+
+    <stylesheets>
+        <URL value="@uistyle.css"/>
+    </stylesheets>
 </BorderPane>

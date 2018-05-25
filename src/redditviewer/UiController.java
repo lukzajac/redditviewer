@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -25,6 +26,7 @@ public class UiController implements Initializable {
     public UiController() {
         loader = new Loader();
         postTitles = new ListView<Post>();
+        postContents = new TextArea();
     }
 
     @Override public void initialize(URL location, ResourceBundle resources) {
