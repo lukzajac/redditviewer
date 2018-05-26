@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
@@ -10,11 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="redditviewer.UiController">
     <top>
-        <HBox>
-            <TextField fx:id="subredditField" HBox.hgrow="ALWAYS" text="jokes"/>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Subreddit name:"/>
+            <TextField fx:id="subredditField" HBox.hgrow="SOMETIMES" text="jokes"/>
+            <ComboBox fx:id="sortModeSelection" onAction="#selectSortMode"/>
             <Button fx:id="goButton" text="Go" onAction="#loadSubreddit"/>
         </HBox>
     </top>
@@ -24,7 +28,7 @@
     <center>
         <VBox fx:id="vbox">
             <Text fx:id="postTitle" wrappingWidth="${vbox.width}"/>
-            <TextArea fx:id="postContents" VBox.vgrow="ALWAYS" editable="false" wrapText="true"/>
+            <WebView fx:id="postContents" VBox.vgrow="ALWAYS" />
         </VBox>
     </center>
 

@@ -12,17 +12,21 @@ import java.net.URL;
 import java.util.Iterator;
 
 public class Loader {
-    public void setSubreddit(String subreddit) {
-        this.subreddit = subreddit;
-    }
-
-    public void setUserAgent(String userAgent) {
-        this.userAgent = userAgent;
-    }
-
     private String subreddit;
     private String userAgent;
     private ObjectMapper mapper;
+    private String sortMode;
+
+    public void setSortMode(String sortMode) {
+        this.sortMode = sortMode;
+    }
+
+    public void setSubreddit(String subreddit) {
+        this.subreddit = subreddit;
+    }
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
+    }
 
     public Loader() {
         mapper = new ObjectMapper();
@@ -50,8 +54,8 @@ public class Loader {
     }
 
     private URL createURL() throws MalformedURLException {
-        String urlTemplate = "https://reddit.com/r/%s/top.json";
-        return new URL(String.format(urlTemplate, subreddit));
+        String urlTemplate = "https://reddit.com/r/%s/%s.json";
+        return new URL(String.format(urlTemplate, subreddit, sortMode));
     }
 
     private ObservableList<Post> parseTree(JsonNode root) {
@@ -60,9 +64,7 @@ public class Loader {
         Iterator<JsonNode> it = data.elements();
         while (it.hasNext()) {
             JsonNode postData = it.next().get("data");
-            Post post = new Post(postData.get("title").asText());
-            post.setSelftext(postData.get("selftext").asText());
-            posts.add(post);
+            posts.add(new Post(postData));
         }
         return posts;
     }
